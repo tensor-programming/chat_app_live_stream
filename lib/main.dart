@@ -331,6 +331,14 @@ class _ChatState extends State<Chat> {
                       child: CircularProgressIndicator(),
                     );
 
+                  SchedulerBinding.instance.addPostFrameCallback((_) {
+                    scrollController.animateTo(
+                    scrollController.position.maxScrollExtent,
+                    curve: Curves.easeOut,
+                    duration: const Duration(milliseconds: 300),
+                    );
+                  });
+                  
                   List<DocumentSnapshot> docs = snapshot.data.documents;
 
                   List<Widget> messages = docs
